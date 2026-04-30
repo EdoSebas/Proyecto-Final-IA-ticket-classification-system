@@ -1,0 +1,88 @@
+﻿name: CI/CD Pipeline - Ticket Classification System
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+
+  test-model:
+    name: Pruebas del Modelo ML/DL
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout codigo
+        uses: actions/checkout@v3
+
+      - name: Configurar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Instalar dependencias AI service
+        run: |
+          pip install scikit-learn pandas numpy joblib pytest
+
+      - name: Entrenar modelo ML
+        working-directory: ticket-classification-system/ai-service
+        run: python train_ml.py
+
+      - name: Entrenar modelo DL
+        working-directory: ticket-classification-system/ai-service
+        run: python train_dl.py
+
+      - name: Ejecutar pruebas del modelo
+        working-directory: ticket-classification-system
+        run: python -m pytest tests/test_model.py -v
+
+  test-ticket-service:
+    name: Pruebas del Ticket Service
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout codigo
+        uses: actions/checkout@v3
+
+      - name: Configurar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Instalar dependencias ticket service
+        run: |
+          pip install fastapi uvicorn sqlalchemy psycopg2-binary pydantic pydantic-settings kafka-python pytest httpx==0.24.1
+
+      - name: Ejecutar pruebas del ticket service
+        working-directory: ticket-classification-system
+        run: python -m pytest tests/test_tickets.py -v
+
+  build-docker:
+    name: Build Docker Images
+    runs-on: ubuntu-latest
+    needs: [ test-model, test-ticket-service ]
+    steps:
+      - name: Checkout codigo
+        uses: actions/checkout@v3
+
+      - name: Build AI Service
+        working-directory: ticket-classification-system/ai-service
+        run: docker build -t ai-service:latest .
+
+      - name: Build Ticket Service
+        working-directory: ticket-classification-system/ticket-service
+        run: docker build -t ticket-service:latest .
+
+  summary:
+    name: Resumen Final
+    runs-on: ubuntu-latest
+    needs: [ test-model, test-ticket-service, build-docker ]
+    steps:
+      - name: Pipeline completado
+        run: |
+          echo "=================================="
+          echo "   PIPELINE COMPLETADO"
+          echo "=================================="
+          echo " Pruebas modelo:          OK"
+          echo " Pruebas ticket-service:  OK"
+          echo " Build Docker:            OK"
+          echo "=================================="

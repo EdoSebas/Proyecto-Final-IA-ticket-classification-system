@@ -8,7 +8,7 @@ models.Base.metadata.create_all(bind=database.engine)
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Iniciar el consumidor de Kafka en un hilo secundario
+    # -Iniciar el consumidor de Kafka en un hilo secundario
     kafka_utils.start_kafka_consumer(database.engine)
     yield
 
