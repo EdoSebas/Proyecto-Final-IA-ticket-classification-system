@@ -1,0 +1,30 @@
+﻿# Cache Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Entornos virtuales
+venv/
+.venv/
+env/
+
+# Variables de entorno
+.env
+.env.local
+
+# OneDrive
+desktop.ini
+
+# VS Code
+.vscode/
+
+# Sistema operativo
+Thumbs.db
+.DS_Store
+
+# Logs
+*.log
+
+# Docker
+*.dockerignore

@@ -1,0 +1,14 @@
+{
+  "categories": [
+    "Billing",
+    "Cancellations",
+    "General",
+    "Sales",
+    "Technical Support"
+  ],
+  "priorities": [
+    "HIGH",
+    "LOW",
+    "MEDIUM"
+  ]
+}

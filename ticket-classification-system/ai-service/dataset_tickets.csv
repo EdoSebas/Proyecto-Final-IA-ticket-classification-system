@@ -1,0 +1,121 @@
+﻿text,category,priority
+Mi factura llego con un cobro incorrecto,Billing,HIGH
+Me cobraron dos veces el mismo servicio,Billing,HIGH
+Necesito una copia de mi factura,Billing,MEDIUM
+Cual es el costo del plan premium,Billing,LOW
+No puedo acceder a mi cuenta,Technical Support,HIGH
+La aplicacion se cierra sola al iniciar sesion,Technical Support,HIGH
+El sistema esta caido y no puedo trabajar,Technical Support,HIGH
+Tengo un error 500 al guardar archivos,Technical Support,HIGH
+La pagina carga muy lento desde ayer,Technical Support,MEDIUM
+No me llegan las notificaciones por correo,Technical Support,MEDIUM
+Quiero cancelar mi suscripcion mensual,Cancellations,HIGH
+Deseo dar de baja mi cuenta permanentemente,Cancellations,HIGH
+Quiero cancelar el plan anual y pedir reembolso,Cancellations,HIGH
+Como cancelo mi prueba gratuita,Cancellations,MEDIUM
+Quiero pausar mi suscripcion por un mes,Cancellations,MEDIUM
+Estoy interesado en comprar el plan empresarial,Sales,LOW
+Tienen descuentos para estudiantes,Sales,LOW
+Quiero informacion sobre los planes disponibles,Sales,LOW
+Me gustaria hacer una demo del producto,Sales,LOW
+No entiendo como funciona el sistema,General,LOW
+Cual es el horario de atencion al cliente,General,LOW
+Tienen soporte en espanol,General,LOW
+Mi equipo perdio acceso al sistema,Technical Support,HIGH
+El servidor no responde desde hace 2 horas,Technical Support,HIGH
+Necesito que me devuelvan el dinero cobrado,Billing,HIGH
+Me llego una factura de un plan que no contrate,Billing,HIGH
+Mi tarjeta fue rechazada al intentar pagar,Billing,HIGH
+Quiero cancelar y me siguen cobrando,Cancellations,HIGH
+Cancele hace un mes y siguen cobrando,Cancellations,HIGH
+No funciona el inicio de sesion con Google,Technical Support,HIGH
+La autenticacion de dos factores no llega,Technical Support,HIGH
+La API esta devolviendo errores 401,Technical Support,HIGH
+Quiero actualizar mi plan al siguiente nivel,Sales,MEDIUM
+El sistema no guarda los cambios que hago,Technical Support,HIGH
+La integracion con mi CRM dejo de funcionar,Technical Support,HIGH
+Necesito factura con datos fiscales,Billing,MEDIUM
+El sistema de pagos muestra error al procesar,Billing,HIGH
+Mi cuenta fue bloqueada sin razon aparente,Technical Support,HIGH
+Quiero informacion para comprar 200 licencias,Sales,MEDIUM
+No me dejan cancelar desde la plataforma,Cancellations,HIGH
+El boton de cancelar no aparece en mi cuenta,Cancellations,HIGH
+Mi problema no ha sido resuelto en varios dias,General,HIGH
+Necesito hablar con un supervisor,General,HIGH
+Quiero escalar mi queja a nivel superior,General,HIGH
+El cobro no corresponde al plan contratado,Billing,HIGH
+Necesito ajustar los datos de mi factura,Billing,MEDIUM
+Cuando llega mi proximo cobro,Billing,LOW
+Quiero cambiar mi metodo de pago,Billing,MEDIUM
+No reconozco un cargo en mi estado de cuenta,Billing,HIGH
+Solicito devolucion del ultimo pago,Billing,HIGH
+El recibo de pago no llego a mi correo,Billing,MEDIUM
+Quiero ver el historial de mis facturas,Billing,LOW
+Me aplicaron un descuento incorrecto,Billing,MEDIUM
+Tengo un saldo pendiente que ya pague,Billing,HIGH
+El sistema no acepta mi tarjeta de debito,Billing,HIGH
+Quiero saber cuanto debo pagar este mes,Billing,LOW
+La aplicacion no carga en mi celular,Technical Support,HIGH
+No puedo subir archivos al sistema,Technical Support,MEDIUM
+El modulo de reportes no funciona,Technical Support,HIGH
+Tengo problemas con la sincronizacion,Technical Support,MEDIUM
+El sistema borro mis datos sin razon,Technical Support,HIGH
+No puedo exportar mis reportes a PDF,Technical Support,MEDIUM
+La busqueda del sistema no encuentra resultados,Technical Support,MEDIUM
+El sistema me cierra sesion automaticamente,Technical Support,MEDIUM
+No puedo cambiar mi contrasena,Technical Support,MEDIUM
+El correo de verificacion no llega,Technical Support,MEDIUM
+La integracion con Slack no funciona,Technical Support,HIGH
+El sistema es muy lento para cargar,Technical Support,MEDIUM
+No puedo agregar nuevos usuarios,Technical Support,MEDIUM
+El dashboard no muestra datos correctos,Technical Support,HIGH
+Tengo un bug en el modulo de facturacion,Technical Support,HIGH
+El sistema no envia alertas automaticas,Technical Support,MEDIUM
+No puedo conectarme desde otra ciudad,Technical Support,HIGH
+La app de escritorio no abre,Technical Support,HIGH
+El chat en vivo no funciona,Technical Support,MEDIUM
+Quiero cancelar y que me devuelvan mi dinero,Cancellations,HIGH
+Como solicito la cancelacion de mi cuenta,Cancellations,HIGH
+Quiero terminar mi contrato antes de tiempo,Cancellations,HIGH
+Me quiero dar de baja del servicio,Cancellations,HIGH
+Quiero cancelar pero no encuentro la opcion,Cancellations,HIGH
+Solicito cancelacion inmediata de mi plan,Cancellations,HIGH
+Quiero cancelar el plan pero conservar mis datos,Cancellations,MEDIUM
+Cancele y aun me cobran la mensualidad,Cancellations,HIGH
+Quiero saber el proceso para cancelar,Cancellations,LOW
+Cuanto tiempo tarda en hacerse efectiva la cancelacion,Cancellations,LOW
+Quiero cancelar solo un modulo del plan,Cancellations,MEDIUM
+Me arrepenti de cancelar puedo reactivar,Cancellations,MEDIUM
+Quiero cancelar la renovacion automatica,Cancellations,MEDIUM
+No quiero que se renueve mi plan anual,Cancellations,MEDIUM
+Quiero cancelar la prueba gratis antes de que cobre,Cancellations,HIGH
+Quiero comprar el plan corporativo,Sales,MEDIUM
+Tienen algun plan para startups,Sales,LOW
+Que incluye el plan basico,Sales,LOW
+Cuales son las diferencias entre planes,Sales,LOW
+Tienen precio especial para ONGs,Sales,LOW
+Quiero hacer una cotizacion para mi empresa,Sales,MEDIUM
+Puedo probar el sistema antes de comprar,Sales,LOW
+Tienen descuento por pago anual,Sales,LOW
+Quiero hablar con un asesor comercial,Sales,MEDIUM
+Como puedo adquirir mas almacenamiento,Sales,MEDIUM
+Tienen integraciones con otros sistemas,Sales,LOW
+Puedo personalizar el plan segun mis necesidades,Sales,MEDIUM
+Cuanto cuesta agregar usuarios adicionales,Sales,LOW
+Tienen plan de referidos,Sales,LOW
+Me interesa el plan para equipos remotos,Sales,LOW
+No se a quien contactar para mi problema,General,MEDIUM
+Necesito asistencia urgente,General,HIGH
+Quiero dejar una queja formal,General,HIGH
+No estoy satisfecho con el servicio,General,HIGH
+Como puedo contactar a soporte,General,LOW
+Tienen redes sociales de soporte,General,LOW
+Cuando responden los tickets normalmente,General,LOW
+Quiero saber mas sobre la empresa,General,LOW
+Como puedo dejar una resena del servicio,General,LOW
+Necesito soporte en tiempo real,General,HIGH
+Quiero que un agente me llame,General,MEDIUM
+Tengo una sugerencia para mejorar el producto,General,LOW
+No encuentro lo que busco en el sistema,General,MEDIUM
+Necesito capacitacion para usar el sistema,General,LOW
+Como actualizo mis datos de contacto,General,LOW
