@@ -80,6 +80,34 @@ kubectl port-forward service/ticket-service 9090:8000
 
 API disponible en: http://localhost:9090
 
+## Cargar base de datos de prueba
+
+El proyecto incluye un script para crear datos de ejemplo directamente en la base de datos, sin importar manualmente el archivo CSV. El script borra los tickets actuales, reinicia el contador de IDs y carga 20 tickets ordenados desde `id = 1`.
+
+Con Docker Compose en ejecucion:
+
+```bash
+docker compose exec ticket-service python seed_tickets.py
+```
+
+Resultado esperado en la tabla `tickets`:
+
+```text
+id: 1, 2, 3, ... 20
+```
+
+Para ejecutar solo base de datos y API de tickets:
+
+```bash
+docker compose up --build
+```
+
+Para ejecutar tambien Kafka y el servicio de IA:
+
+```bash
+docker compose --profile ai up --build
+```
+
 ## Pruebas
 
 ```bash

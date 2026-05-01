@@ -4,6 +4,6 @@ metadata:
   name: ticket-system-config
   namespace: default
 data:
-  DATABASE_URL: "sqlite:///./tickets.db"
+  DATABASE_URL: "postgresql+psycopg2://admin:password123@db:5432/tickets_db"
   KAFKA_BOOTSTRAP_SERVERS: "kafka-service:9092"
   AI_SERVICE_URL: "http://ai-service:8001"
