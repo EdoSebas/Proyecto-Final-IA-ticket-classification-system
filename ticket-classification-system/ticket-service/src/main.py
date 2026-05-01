@@ -10,7 +10,26 @@ async def lifespan(app: FastAPI):
     kafka_utils.start_kafka_consumer(database.engine)
     yield
 
-app = FastAPI(title="Ticket Service API", version="1.0.0", lifespan=lifespan)
+app = FastAPI(title="Ticket Classification System API", version="1.0.0", lifespan=lifespan)
+
+@app.get("/")
+def root():
+    return {
+        "message": "Ticket Classification System API funcionando",
+        "version": "1.0.0",
+        "docs": "/docs",
+        "endpoints": {
+            "crear_ticket": "POST /tickets/",
+            "listar_tickets": "GET /tickets/",
+            "obtener_ticket": "GET /tickets/{id}",
+            "actualizar_ticket": "PUT /tickets/{id}",
+            "eliminar_ticket": "DELETE /tickets/{id}"
+        }
+    }
+
+@app.get("/health")
+def health():
+    return {"status": "ok"}
 
 @app.post("/tickets/", response_model=schemas.TicketResponse, status_code=201)
 def create_ticket(ticket: schemas.TicketCreate, db: Session = Depends(database.get_db)):
