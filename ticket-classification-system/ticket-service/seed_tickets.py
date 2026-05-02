@@ -32,7 +32,15 @@ def seed_database():
 
     with database.engine.begin() as connection:
         connection.execute(models.Ticket.__table__.delete())
-        connection.exec_driver_sql("ALTER SEQUENCE tickets_id_seq RESTART WITH 1")
+        dialect = database.engine.dialect.name
+        if dialect == "postgresql":
+            connection.exec_driver_sql("ALTER SEQUENCE tickets_id_seq RESTART WITH 1")
+        elif dialect in {"mysql", "mariadb"}:
+            connection.exec_driver_sql("ALTER TABLE tickets AUTO_INCREMENT = 1")
+        elif dialect == "sqlite":
+            connection.exec_driver_sql("DELETE FROM sqlite_sequence WHERE name = 'tickets'")
+        else:
+            print(f"No se reinicio el contador de IDs para el motor: {dialect}")
 
     db = database.SessionLocal()
     try:
