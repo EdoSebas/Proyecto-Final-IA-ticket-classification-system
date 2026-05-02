@@ -1,29 +1,5 @@
 from src import database, models
-
-
-# Datos de demostracion para poblar la tabla tickets sin importar manualmente el CSV.
-SEED_TICKETS = [
-    ("Mi factura llego con un cobro incorrecto", "Billing", "HIGH"),
-    ("Me cobraron dos veces el mismo servicio", "Billing", "HIGH"),
-    ("Necesito una copia de mi factura", "Billing", "MEDIUM"),
-    ("Cual es el costo del plan premium", "Billing", "LOW"),
-    ("No puedo acceder a mi cuenta", "Technical Support", "HIGH"),
-    ("La aplicacion se cierra sola al iniciar sesion", "Technical Support", "HIGH"),
-    ("El sistema esta caido y no puedo trabajar", "Technical Support", "HIGH"),
-    ("Tengo un error 500 al guardar archivos", "Technical Support", "HIGH"),
-    ("La pagina carga muy lento desde ayer", "Technical Support", "MEDIUM"),
-    ("No me llegan las notificaciones por correo", "Technical Support", "MEDIUM"),
-    ("Quiero cancelar mi suscripcion mensual", "Cancellations", "HIGH"),
-    ("Deseo dar de baja mi cuenta permanentemente", "Cancellations", "HIGH"),
-    ("Quiero cancelar el plan anual y pedir reembolso", "Cancellations", "HIGH"),
-    ("Como cancelo mi prueba gratuita", "Cancellations", "MEDIUM"),
-    ("Quiero pausar mi suscripcion por un mes", "Cancellations", "MEDIUM"),
-    ("Estoy interesado en comprar el plan empresarial", "Sales", "LOW"),
-    ("Tienen descuentos para estudiantes", "Sales", "LOW"),
-    ("Quiero informacion sobre los planes disponibles", "Sales", "LOW"),
-    ("Me gustaria hacer una demo del producto", "Sales", "LOW"),
-    ("No entiendo como funciona el sistema", "General", "LOW"),
-]
+from src.seed_data import SEED_TICKETS
 
 
 def seed_database():
