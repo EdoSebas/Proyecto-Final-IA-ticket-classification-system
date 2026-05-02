@@ -1,4 +1,5 @@
 services:
+  # Base de datos local usada por ticket-service.
   db:
     image: postgres:15-alpine
     container_name: ticket_classification_db
@@ -52,6 +53,7 @@ services:
     networks:
       - ticket_network
 
+  # API REST que recibe, consulta, actualiza y elimina tickets.
   ticket-service:
     build:
       context: ./ticket-service
@@ -71,6 +73,7 @@ services:
     networks:
       - ticket_network
 
+  # Servicio de IA que consume eventos de Kafka y clasifica tickets.
   ai-service:
     build:
       context: ./ai-service

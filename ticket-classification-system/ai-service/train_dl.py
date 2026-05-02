@@ -9,6 +9,7 @@ from sklearn.metrics import accuracy_score, classification_report
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 df = pd.read_csv(os.path.join(BASE_DIR, "dataset_tickets.csv"))
 
+# Aumenta el dataset con variaciones simples para mejorar la generalizacion.
 rows = []
 for _, r in df.iterrows():
     rows.append({"text": r["text"], "category": r["category"], "priority": r["priority"]})
@@ -28,6 +29,7 @@ X_train, X_test, yc_train, yc_test, yp_train, yp_test = train_test_split(
     X, y_cat, y_pri, test_size=0.2, random_state=42)
 
 print("Entrenando red neuronal para CATEGORIA...")
+# Pipeline DL: TF-IDF vectoriza el texto y MLPClassifier actua como red neuronal.
 pipe_cat = Pipeline([
     ("tfidf", TfidfVectorizer(ngram_range=(1,2), max_features=5000, sublinear_tf=True)),
     ("mlp", MLPClassifier(hidden_layer_sizes=(256,128,64), activation="relu",
@@ -38,6 +40,7 @@ print(f"Accuracy categoria: {accuracy_score(yc_test, pipe_cat.predict(X_test)):.
 print(classification_report(yc_test, pipe_cat.predict(X_test), target_names=le_cat.classes_))
 
 print("Entrenando red neuronal para PRIORIDAD...")
+# Se entrena un segundo modelo para predecir la prioridad del ticket.
 pipe_pri = Pipeline([
     ("tfidf", TfidfVectorizer(ngram_range=(1,2), max_features=5000, sublinear_tf=True)),
     ("mlp", MLPClassifier(hidden_layer_sizes=(256,128,64), activation="relu",
@@ -49,6 +52,7 @@ print(classification_report(yp_test, pipe_pri.predict(X_test), target_names=le_p
 
 models_dir = os.path.join(BASE_DIR, "models")
 os.makedirs(models_dir, exist_ok=True)
+# Guarda el modelo principal y los LabelEncoder para convertir IDs a etiquetas.
 joblib.dump(pipe_cat, os.path.join(models_dir, "model_dl_category.pkl"))
 joblib.dump(pipe_pri, os.path.join(models_dir, "model_dl_priority.pkl"))
 joblib.dump(le_cat,   os.path.join(models_dir, "dl_label_encoder_category.pkl"))

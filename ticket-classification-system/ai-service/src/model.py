@@ -3,11 +3,13 @@
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 MODELS_DIR = os.path.join(BASE_DIR, "..", "models")
 
+# Variables globales para cargar los modelos una sola vez y reutilizarlos.
 _dl_cat = _dl_pri = _dl_le_cat = _dl_le_pri = None
 _ml_cat = _ml_pri = _ml_le_cat = _ml_le_pri = None
 MODEL_TYPE = None
 
 def _load_models():
+    # Primero intenta cargar el modelo MLP; si falla, usa RandomForest como respaldo.
     global _dl_cat,_dl_pri,_dl_le_cat,_dl_le_pri,MODEL_TYPE
     global _ml_cat,_ml_pri,_ml_le_cat,_ml_le_pri
     try:
@@ -31,6 +33,7 @@ def _load_models():
             MODEL_TYPE = None
 
 def predict_ticket(text: str) -> dict:
+    # Funcion central de IA: recibe texto y devuelve categoria, prioridad y confianza.
     global MODEL_TYPE
     if MODEL_TYPE is None:
         _load_models()
@@ -38,17 +41,20 @@ def predict_ticket(text: str) -> dict:
         return {"ai_category":"General","ai_priority":"LOW","ai_confidence":0.0,"model_used":"none"}
     try:
         if MODEL_TYPE == "dl":
+            # Prediccion con el modelo principal de Deep Learning.
             cat = _dl_le_cat.inverse_transform(_dl_cat.predict([text]))[0]
             pri = _dl_le_pri.inverse_transform(_dl_pri.predict([text]))[0]
             conf = round(float(np.max(_dl_cat.predict_proba([text])[0])), 4)
             return {"ai_category":cat,"ai_priority":pri,"ai_confidence":conf,"model_used":"deep_learning_mlp"}
         elif MODEL_TYPE == "ml":
+            # Prediccion con el modelo clasico de Machine Learning.
             cat = _ml_le_cat.inverse_transform(_ml_cat.predict([text]))[0]
             pri = _ml_le_pri.inverse_transform(_ml_pri.predict([text]))[0]
             conf = round(float(np.max(_ml_cat.predict_proba([text])[0])), 4)
             return {"ai_category":cat,"ai_priority":pri,"ai_confidence":conf,"model_used":"random_forest"}
     except Exception as e:
         print(f"Error prediccion: {e}")
+    # Reglas simples de respaldo si no se pudo usar ningun modelo entrenado.
     t = text.lower()
     if any(w in t for w in ["error","falla","no funciona","caido"]):
         return {"ai_category":"Technical Support","ai_priority":"HIGH","ai_confidence":0.5,"model_used":"fallback"}

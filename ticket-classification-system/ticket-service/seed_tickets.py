@@ -1,6 +1,7 @@
 from src import database, models
 
 
+# Datos de demostracion para poblar la tabla tickets sin importar manualmente el CSV.
 SEED_TICKETS = [
     ("Mi factura llego con un cobro incorrecto", "Billing", "HIGH"),
     ("Me cobraron dos veces el mismo servicio", "Billing", "HIGH"),
@@ -26,6 +27,7 @@ SEED_TICKETS = [
 
 
 def seed_database():
+    # Crea la tabla si no existe, limpia datos previos y reinicia el contador de IDs.
     models.Base.metadata.create_all(bind=database.engine)
 
     with database.engine.begin() as connection:
@@ -34,6 +36,7 @@ def seed_database():
 
     db = database.SessionLocal()
     try:
+        # Convierte cada ejemplo en un registro Ticket listo para insertar.
         tickets = [
             models.Ticket(
                 title=title,
